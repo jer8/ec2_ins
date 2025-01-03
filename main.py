@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 from vocode.streaming.models.telephony import TwilioConfig
 
 # Import both if using ngrok
-from pyngrok import ngrok
+#from pyngrok import ngrok
 import sys
 from memory_config import config_manager
 from vocode.streaming.models.agent import ChatGPTAgentConfig
@@ -47,20 +47,20 @@ logger.setLevel(logging.DEBUG)
 CONFIG_MANAGER = config_manager  #RedisConfigManager()
 
 # Activate this if you want to support NGROK
-if not BASE_URL:
-     ngrok_auth = os.environ.get("NGROK_AUTH_TOKEN")
-     if ngrok_auth is not None:
-         ngrok.set_auth_token(ngrok_auth)
-     port = sys.argv[sys.argv.index("--port") + 1] if "--port" in sys.argv else 3000
+#if not BASE_URL:
+     #ngrok_auth = os.environ.get("NGROK_AUTH_TOKEN")
+     #if ngrok_auth is not None:
+         #ngrok.set_auth_token(ngrok_auth)
+     #port = sys.argv[sys.argv.index("--port") + 1] if "--port" in sys.argv else 3000
  
      # Open a ngrok tunnel to the dev server
-     BASE_URL = ngrok.connect(port).public_url.replace("https://", "")
-     logger.info('ngrok tunnel "{}" -> "http://127.0.0.1:{}"'.format(BASE_URL, port))
+    # BASE_URL = ngrok.connect(port).public_url.replace("https://", "")
+     #logger.info('ngrok tunnel "{}" -> "http://127.0.0.1:{}"'.format(BASE_URL, port))
  
 
 # Only continue of the base URL was set within the environment variable. 
-if not BASE_URL:
-    raise ValueError("BASE_URL must be set in environment if not using pyngrok")
+#if not BASE_URL:
+    #raise ValueError("BASE_URL must be set in environment if not using pyngrok")
 
 
 # Now we need a Twilio account and number from which to make our call.
