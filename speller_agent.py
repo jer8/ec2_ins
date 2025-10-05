@@ -5,6 +5,7 @@ from vocode.streaming.agent.chat_gpt_agent import ChatGPTAgent
 from vocode.streaming.models.agent import AgentConfig, AgentType, ChatGPTAgentConfig
 from vocode.streaming.agent.base_agent import BaseAgent, RespondAgent
 from vocode.streaming.agent.default_factory import DefaultAgentFactory
+#break corpus into chunks
 
 
 class SpellerAgentConfig(AgentConfig, type="agent_speller"):
@@ -36,4 +37,5 @@ class SpellerAgentFactory(DefaultAgentFactory):
             return SpellerAgent(
                 agent_config=typing.cast(SpellerAgentConfig, agent_config)
             )
+
         raise Exception("Invalid agent config")
